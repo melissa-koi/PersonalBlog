@@ -1,0 +1,50 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+.bgimage{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.373), rgba(0, 0, 0, 0.356)),url(https://www.bakebusiness.co.ke/wp-content/uploads/2020/10/blog-1.jpg);
+    margin-top: 0px;
+    height:45vh;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+}
+
+#mainNav {
+  position: absolute;
+  border-bottom: 1px solid #e9ecef;
+  background-color: white;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#mainNav .navbar-brand {
+  font-weight: 800;
+  color: #343a40;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 13px;
+  text-transform: uppercase;
+  color: #343a40;
+}
+
+#mainNav .navbar-nav > li.nav-item > a {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
