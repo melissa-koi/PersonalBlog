@@ -12,7 +12,7 @@ def index():
     posts_display = Post.query.all()
     return render_template('index.html', title=title, posts_display=posts_display)
 
-@main.route('/forms/blog')
+@main.route('/forms/blog', methods=['GET', 'POST'])
 def blogform():
     form = PostForm()
     if form.validate_on_submit():
@@ -23,5 +23,5 @@ def blogform():
         post_obj = Post(title=title, content=content, author = author,user_id = user_id)
         post_obj.save_post()
         return redirect(url_for('main.index'))
-    return render_template('blog_from.html', form=form)
+    return render_template('blog_form.html', form=form)
 

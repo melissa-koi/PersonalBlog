@@ -15,7 +15,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255), unique=True, index=True)
     pass_secure = db.Column(db.String(255))
     posts = db.relationship('Post', backref='user', lazy='dynamic')
-    comment = db.relationship('Comment', backref='user', lazy='dynamic')
+    comment = db.relationship('Comment', backref='post', lazy='dynamic')
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
 
@@ -40,12 +40,13 @@ class User(UserMixin,db.Model):
         return f'User {self.username}'
 
 class Post(db.Model):
+    __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
     author = db.Column(db.String(100), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def save_post(self):
         db.session.add(self)
@@ -57,3 +58,22 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    comment = db.Column(db.Text(), nullable=False)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Comments: {self.comment}'
+

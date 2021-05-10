@@ -6,4 +6,19 @@
 
 {% block content %}
 <div class="bgimage">This is the homepage</div>
+
+<div class="container">
+    <div class="card-group">
+        {% for post in posts_display %}
+        <div class="card" style="min-width: 25rem; max-width: 28rem; margin-top: 30px; margin-bottom: 30px;margin-right: 20px; border:1px solid black">
+            <div class="post-preview">
+                <h2 class="post-title">{{post.title}}</h2>
+                <h3 class="post-subtitle">{{post.content}}</h3>
+                <p class="post-meta">Posted by {{post.author}} on {{post.date_posted.strftime('%B %d, %Y')}}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
