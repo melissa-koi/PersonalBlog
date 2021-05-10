@@ -12,6 +12,7 @@
     background-position: center;
     background-repeat: no-repeat;
     padding-top: 40px;
+    z-index:1;
 }
 
 #mainNav {
@@ -44,11 +45,9 @@
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
+  border: 1px solid #023047;
   border-radius: 3px;
   margin-bottom: 20px;
-}
-  color: #212529;
 }
 
 .post-preview > a:focus, .post-preview > a:hover {
