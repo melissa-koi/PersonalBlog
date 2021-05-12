@@ -14,7 +14,7 @@ You will need:
 * Pycharm
 * Flask
 * Heroku
-
+* Quotes API
 
 ## [Link]( https://m-1minpitch.herokuapp.com/ ) to live webpage
 ## [License](https://github.com/melissa-koi//PersonalBlog/blob/main/LICENSE)
