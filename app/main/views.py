@@ -34,12 +34,14 @@ def update_post(post_id):
     if form.validate_on_submit():
         post.title = form.title.data
         post.content = form.content.data
+        post.author = form.author.data
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('main.index'))
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
+        form.author.data = post.author
     return render_template('blog_form.html', form=form)
 
 @main.route("/post/<int:post_id>/delete", methods=['GET', 'POST'])
@@ -73,3 +75,35 @@ def delete_comm(comment_id):
     flash('Your comment has been deleted!', 'success')
     return redirect(url_for('main.comments'))
 
+@main.route('/user/<uname>')
+@login_required
+def profile(uname):
+    uname = current_user.username
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
+    return render_template('profile/profile.html', user=user)
+
+@main.route('/user/<uname>/update_profile', methods=['POST', 'GET'])
+@login_required
+def update_profile(uname):
+    form = UpdateProfile()
+    user = User.query.filter_by(username=uname).first()
+    if user is None:
+        abort(404)
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+        user.save_user()
+        return redirect(url_for('.profile', uname=user.username))
+    return render_template('profile/update.html', form=form, uname=uname)
+
+@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@login_required
+def update_pic(uname):
+    user = User.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path
+        db.session.commit()
+    return redirect(url_for('main.profile',uname=uname))

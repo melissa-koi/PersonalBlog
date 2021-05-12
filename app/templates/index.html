@@ -12,6 +12,13 @@
     </blockquote>
 </div>
 
+<!--Flash Message-->
+{% for message in get_flashed_messages() %}
+<div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{message}}
+</div>
+{% endfor %}
 <div class="container">
     <div class="card-group">
         {% for post in posts_display %}
