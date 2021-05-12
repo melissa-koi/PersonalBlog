@@ -14,6 +14,7 @@ def index():
     return render_template('index.html', title=title, posts_display=posts_display, quote=quote)
 
 @main.route('/forms/blog', methods=['GET', 'POST'])
+@login_required
 def blogform():
     form = PostForm()
     if form.validate_on_submit():
