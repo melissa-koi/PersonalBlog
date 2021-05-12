@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, flash, request, abort
 from . import main
 from flask_login import login_required, current_user
 from .forms import PostForm, CommentForm, UpdateProfile
-from ..models import Post, User
+from ..models import Post, User, Comment
 from .. import db, photos
 
 
@@ -49,3 +49,16 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('main.index'))
+
+@main.route('/pitch/comments', methods = ['GET', 'POST'])
+@login_required
+def comments():
+   form = CommentForm()
+   comments = Comment.query.all()
+   if form.validate_on_submit():
+       comment = form.comment.data
+       new_comment = Comment(comment = comment)
+       new_comment.save()
+       return redirect(url_for('main.comments'))
+
+   return render_template('comment.html', form=form, comments=comments)

@@ -29,7 +29,20 @@
   border-radius: 3px;
   margin-bottom: 20px;
 }
+
 .post-preview {
-    background-color:cornsilk;
+    background-color:rgb(243, 251, 255);
     padding-left: 10px;
+}
+
+.post-preview > .post-meta {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96;
+}
+
+.post-preview > .post-meta > a {
+  text-decoration: none;
+  color: #212529;
 }

@@ -15,7 +15,7 @@
                 <h2 class="post-title" style="">{{post.title}}</h2>
                 <p class="post-subtitle" style="font-size:20px">{{post.content}}</p>
                 <p class="post-meta">Posted by {{post.author}} on {{post.date_posted.strftime('%B %d, %Y')}}</p>
-                <a href= "{{url_for('main.index')}}" class="btn btn-outline-info">Comment</a>
+                <a href= "{{url_for('main.comments')}}" class="btn btn-outline-info">Comment</a>
                 <a href= "{{url_for('main.update_post', post_id=post.id)}}" class="btn btn-outline-info">Update</a>
                 <a href= "{{url_for('main.delete_post', post_id=post.id)}}" class="btn btn-dark btn-sm">Delete</a>
             </div>
