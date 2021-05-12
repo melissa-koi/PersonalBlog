@@ -4,13 +4,14 @@ from flask_login import login_required, current_user
 from .forms import PostForm, CommentForm, UpdateProfile
 from ..models import Post, User, Comment
 from .. import db, photos
-
+from ..requests import get_quotes
 
 @main.route('/')
 def index():
     title = 'Home - Welcome to The Blogging Website'
+    quote = get_quotes()
     posts_display = Post.query.all()
-    return render_template('index.html', title=title, posts_display=posts_display)
+    return render_template('index.html', title=title, posts_display=posts_display, quote=quote)
 
 @main.route('/forms/blog', methods=['GET', 'POST'])
 def blogform():
@@ -62,3 +63,13 @@ def comments():
        return redirect(url_for('main.comments'))
 
    return render_template('comment.html', form=form, comments=comments)
+
+@main.route("/comment/<int:comment_id>/delete", methods=['GET', 'POST'])
+@login_required
+def delete_comm(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Your comment has been deleted!', 'success')
+    return redirect(url_for('main.comments'))
+

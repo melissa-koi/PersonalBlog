@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8" style="border:5px solid grey; margin-top:50px; padding:30px">{{wtf.quick_form(form)}}</div>
+        <div class="col-md-8" style="border:5px solid rgb(166, 166, 166); margin-top:50px; padding:30px">{{wtf.quick_form(form)}}</div>
         <div class="col-md-2"></div>
     </div>
 
@@ -15,10 +15,14 @@
             <h1 style="text-decoration: underline; font-size:45px; text-align:center; margin-top:55px; margin-bottom:30px; ">Comments</h1>
 
             <div class="container">
-                <div class="card-group" style="border:1px solid black">
+                <div class="card-group" style=" ">
                     {% for comment in comments %}
-                    <div class="card-header" style="background-color:grey"></div>
-                    <div class="card-body"><p class="card-text" style="font-size:20px;">{{ comment.comment }}</p></div>
+                    <div class="card" style="min-width: 80vh; max-width:130vh; background-color:rgb(238, 238, 238); margin-bottom:30px">
+                        <div class="card-header" style="background-color:rgb(188, 188, 188)"></div>
+                        <div class="card-body"><p class="card-text" style="font-size:20px;">{{ comment.comment }}</p></div>
+                        <div><a href= "{{url_for('main.delete_comm', comment_id=comment.id)}}" class="btn btn-grey btn-sm" id="delbtn">Delete</a></div>
+                    </div>
+
 
                     {% endfor %}
                 </div>

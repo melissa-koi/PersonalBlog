@@ -9,6 +9,7 @@ class Config:
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+    QUOTES_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
     #
     # #  email configurations
     # MAIL_SERVER = 'smtp.googlemail.com'

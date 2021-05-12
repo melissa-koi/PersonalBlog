@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="bgimage">This is the homepage</div>
+<div class="bgimage">
+    <blockquote class="blockquote text-center" style="padding-top:45px; padding-left:30px; padding-right:30px">
+        <p class="mb-4" style="color:white; font-size:30px">{{quote.quote}}</p>
+        <footer class="blockquote-footer" style="font-weight:bold; font-size:25px; color:darkcyan;"><cite>{{quote.author}}</cite></footer>
+    </blockquote>
+</div>
 
 <div class="container">
     <div class="card-group">
         {% for post in posts_display %}
-        <div class="card" style="min-width: 80vh; max-width:130vh ;margin-left: 70px;margin-top: 30px; margin-bottom: 30px;margin-right: 20px ;align-content:center">
+        <div class="card" style="min-width: 80vh; max-width:130vh ;margin-left: 70px;margin-top: 30px; margin-bottom: 30px;margin-right: 20px ;align-content:center; padding:10px">
             <div class="post-preview">
                 <h2 class="post-title" style="">{{post.title}}</h2>
                 <p class="post-subtitle" style="font-size:20px">{{post.content}}</p>
