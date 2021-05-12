@@ -14,7 +14,16 @@
         <div class="col-md-10" style="">
             <h1 style="text-decoration: underline; font-size:45px; text-align:center; margin-top:55px; margin-bottom:30px; ">Comments</h1>
 
-            
+            <div class="container">
+                <div class="card-group" style="border:1px solid black">
+                    {% for comment in comments %}
+                    <div class="card-header" style="background-color:grey"></div>
+                    <div class="card-body"><p class="card-text" style="font-size:20px;">{{ comment.comment }}</p></div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         <div class="col-md-1"></div>
     </div>
 </div>
