@@ -10,13 +10,15 @@
 <div class="container">
     <div class="card-group">
         {% for post in posts_display %}
-        <div class="card" style="min-width: 25rem; max-width: 28rem; margin-top: 30px; margin-bottom: 30px;margin-right: 20px; border:1px solid #023047">
+        <div class="card" style="min-width: 80vh; max-width:130vh ;margin-left: 70px;margin-top: 30px; margin-bottom: 30px;margin-right: 20px ;align-content:center">
             <div class="post-preview">
-                <h2 class="post-title">{{post.title}}</h2>
-                <h3 class="post-subtitle">{{post.content}}</h3>
+                <h2 class="post-title" style="">{{post.title}}</h2>
+                <p class="post-subtitle" style="font-size:20px">{{post.content}}</p>
                 <p class="post-meta">Posted by {{post.author}} on {{post.date_posted.strftime('%B %d, %Y')}}</p>
+                <a href= "{{url_for('main.index')}}" class="btn btn-outline-info">Comment</a>
+                <a href= "{{url_for('main.index')}}" class="btn btn-outline-info">Update</a>
+                <a href= "{{url_for('main.index')}}" class="btn btn-dark">Delete</a>
             </div>
-
         </div>
         {% endfor %}
     </div>
